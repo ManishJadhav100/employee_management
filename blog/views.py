@@ -1,9 +1,7 @@
 from django.contrib.auth.models import Permission
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from django.db import IntegrityError
 from .models import Employee
-from .forms import EmployeeForm
 
 # Create your views here.
 
@@ -29,15 +27,15 @@ def createEmployee(request):
         employee.email = email
         employee.job = job
         employee.salary = salary
-        if Employee.objects.values_list('email') == employee.email:
-            return render(request, 'employeeForm.html', {'form':EmployeeForm(), 'error':'Bad data passed in. Try again.'})
-        else:
-            form = EmployeeForm(request.POST)
-            newemployee = form.save(commit=False)
-            newemployee.user = request.user
-            newemployee.save()
-            return redirect('index')
-    
+        employee.save()
+        return redirect('index')
+    elif request.method == "POST":
+        name = request.POST.get('')
+        email = request.POST.get('')
+        job = request.POST.get('')
+        salary = request.POST.get('')
+        return redirect('employeeForm')
+    return redirect('index')
 
 def editEmployeeForm(request, employee_id):
     employee = Employee.objects.get(pk=employee_id)
