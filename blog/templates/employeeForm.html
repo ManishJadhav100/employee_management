@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Create Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <form method="POST" action="{% url 'createEmployee' %}">
+        {% csrf_token %}
+        <div style="margin: 10px auto; width: 90%;">
+            <h1 style="text-align: center;">Create Employee</h1>
+        </div>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <table style="width: 100%; text-align: center;">
+            
+            <tr>
+                <td>
+                    <div style="margin:10px auto; width:50%; text-align: center;">
+                        <label for="">Name : </label>
+                        <input type="text" name="name" placeholder="Enter Employee Name" style="width:30%;" required> 
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin:10px auto; width:50%; text-align: center;">
+                        <label for="">Email : </label>
+                        <input type="email" name="email" placeholder="Enter Employee Email" style="width:30%;" required> 
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin:10px auto; width:50%; text-align: center;">
+                        <label for="">Job Title : </label>
+                        <input type="text" name="job" placeholder="Enter Employee Job Title" style="width:30%;" required> 
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin:10px auto; width:50%; text-align: center;">
+                        <label for="">Salary : </label>
+                        <input type="text" name="salary" placeholder="Enter Employee Salary" style="width:30%;" required> 
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin:10px auto; width:50%; text-align: center;">
+                        <input class="add-button" type="submit" value="Create Employee" > 
+                    </div>
+                </td>
+            </tr>
+          
+        </table>
+
+        
+
+        
+
+        
+
+        
+
+        
+    </form>
+    
+</body>
+</html>

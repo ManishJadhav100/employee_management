@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> 
+</head>
+<body>
+    <form method="POST" action="{% url 'editEmployee' %}">
+        {% csrf_token %}
+        <div style="margin: 10px auto; width: 90%;">
+            <h1 style="text-align: center;">Edit Employee Info</h1>
+        </div>
+ 
+        <div style="margin:10px auto; width:50%; text-align: center;">
+            <label for="">Id</label>
+            <input name="id" value="{{employee.id}}" readonly > 
+        </div>
+
+        <div style="margin:10px auto; width:50%; text-align: center;">
+            <label for="">Name</label>
+            <input type="text" name="name" value="{{employee.name}}" placeholder="Enter Employee Name"> 
+        </div>
+
+        <div style="margin:10px auto; width:50%; text-align: center;">
+            <label for="">Email</label>
+            <input type="email" name="email" value="{{employee.email}}" placeholder="Enter Employee Email"> 
+        </div>
+
+        <div style="margin:10px auto; width:50%; text-align: center;">
+            <label for="">Job Title</label>
+            <input type="text" name="job" value="{{employee.job}}" placeholder="Enter Employee Job Title"> 
+        </div>
+
+        <div style="margin:10px auto; width:50%; text-align: center;">
+            <label for="">Salary</label>
+            <input type="text" name="salary" value="{{employee.salary}}" placeholder="Enter Employee Salary"> 
+        </div>
+
+        <div style="margin:10px auto; width:50%; text-align: center;">
+            <input type="submit" value="edit employee info" style="background-color: blue; color: white;"> 
+        </div>
+    </form>
+    
+</body>
+</html>
